@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AppOasis</title>
+    <style>
+        body {
+            background-color: #f0f0f0;
+            color: #333;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        #main-text {
+            font-size: 36px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+        }
+        #discord-button {
+            background-color: #7289DA;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        #info-table {
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            width: 80%;
+            text-align: left;
+        }
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .info-row span {
+            font-weight: bold;
+        }
+        #download-button {
+            background-color: #008CBA;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            margin-top: 30px;
+        }
+        #thank-you-message {
+            display: none;
+            color: white;
+            background-color: #333;
+            padding: 50px;
+        }
+        #profile-image {
+            border-radius: 50%;
+            cursor: pointer;
+            width: 100px; /* Adjust the width */
+            height: 100px; /* Adjust the height */
+            margin: 20px auto;
+            transition: transform 0.3s ease-in-out;
+        }
+        #profile-image:hover {
+            transform: scale(1.1);
+        }
+        #popup {
+            display: none;
+            background-color: rgba(0, 0, 0, 0.7);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+        }
+        #popup-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="main-text">
+        Welcome to  AppOasis!
+    </div>
+    <a href="https://discord.gg/5AAuAkkGkn" target="_blank" rel="noopener noreferrer">
+        <button id="discord-button">
+            Discord
+        </button>
+    </a>
+    <div id="info-table">
+        <div class="info-row">
+            <span>Version:</span>
+            <span>1.0.0</span>
+        </div>
+        <div class="info-row">
+            <span>Developer:</span>
+            <span>Your Name</span>
+        </div>
+        <div class="info-row">
+            <span>Release Date:</span>
+            <span>September 14, 2023</span>
+        </div>
+    </div>
+    <button id="download-button" onclick="downloadApp()">
+        Download App
+    </button>
+    <div id="thank-you-message">
+        Thank you for using this app!
+    </div>
+
+    
+    <!-- Popup for Profile Information -->
+    <div id="popup">
+        <div id="popup-content">
+            <p><strong>Name:</strong> <span id="popup-name"></span></p>
+            <p><strong>Owner:</strong> <span id="popup-owner"></span></p>
+            <p><strong>Bio:</strong> <span id="popup-bio"></span></p>
+            <button onclick="closePopup()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        function downloadApp() {
+            // Simulate a download process
+            setTimeout(function() {
+                // Hide all elements
+                document.getElementById("main-text").style.display = "none";
+                document.getElementById("discord-button").style.display = "none";
+                document.getElementById("info-table").style.display = "none";
+                document.getElementById("download-button").style.display = "none";
+                document.getElementById("profile-image").style.display = "none";
+                // Show the thank you message with a fade-in effect
+                var thankYouMessage = document.getElementById("thank-you-message");
+                thankYouMessage.style.display = "block";
+                var opacity = 0;
+                var interval = setInterval(function() {
+                    if (opacity < 1) {
+                        opacity += 0.02;
+                        thankYouMessage.style.opacity = opacity;
+                    } else {
+                        clearInterval(interval);
+                    }
+                }, 20);
+            }, 2000); // Simulating a 2-second download
+        }
+
+        function showPopup(name, owner, bio) {
+            document.getElementById("popup-name").textContent = name;
+            document.getElementById("popup-owner").textContent = owner;
+            document.getElementById("popup-bio").textContent = bio;
+            document.getElementById("popup").style.display = "flex";
+        }
+
+        function closePopup() {
+            document.getElementById("popup").style.display = "none";
+        }
+    </script>
+</body>
+</html>
